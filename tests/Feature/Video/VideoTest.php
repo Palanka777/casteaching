@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Video;
 
+use App\Models\Video;
 use Carbon\Carbon;
 use Carbon\Exceptions\Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,19 +11,19 @@ use Tests\TestCase;
 
 class VideoTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * @test
      */
     public function users_can_view_videos()
     {
-        // FASE 1 -> Preparacio -> Prepare
-        // WISHFUL PROGRAMMING
+
         $video = Video::create([
            'title' => 'Ubuntu 101',
            'description' => '# Here description',
            'url' => 'https://youtube/w8j07_DBL_I',
            'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
-           'completed' => false,
            'previous' => null,
            'next' => null,
            'series_id' => 1
@@ -32,7 +33,7 @@ class VideoTest extends TestCase
 
         $response = $this->get('/videos/' . $video->id);
 
-
+//dd('/videos/' .$video->id);
 
         // FASE 3 -> Assertions -> comprovacions
         $response->assertStatus(200);
