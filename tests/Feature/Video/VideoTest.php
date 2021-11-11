@@ -9,6 +9,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+/**
+ * @covers \App\Http\Controllers\VideosController
+ */
+
 class VideoTest extends TestCase
 {
     use RefreshDatabase;
@@ -18,6 +22,9 @@ class VideoTest extends TestCase
      */
     public function users_can_view_videos()
     {
+
+        //create_default_user();
+        //create_default_video();
 
         $video = Video::create([
            'title' => 'Ubuntu 101',
@@ -43,4 +50,15 @@ class VideoTest extends TestCase
 
 
     }
+
+    /**
+     * @test
+     */
+    public function users_cannot_view_not_existing_videos()
+    {
+        $response = $this->get('/videos/999');
+        $response->assertStatus(404);
+
+    }
+
 }
