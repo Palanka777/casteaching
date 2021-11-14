@@ -15,10 +15,14 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="/videos/1">
+                        {{ __('Videos 1') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            @if(Auth::check())
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
@@ -122,6 +126,16 @@
                     </x-jet-dropdown>
                 </div>
             </div>
+            @else
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        @endif
+                </div>
+            @endif
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -135,12 +149,19 @@
         </div>
     </div>
 
+    @if(Auth::check())
+
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="/videos/1" :active="request()->routeIs('dashboard')">
+                {{ __('Videos 1') }}
+            </x-jet-responsive-nav-link>
+
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -214,4 +235,5 @@
             </div>
         </div>
     </div>
+    @endif
 </nav>
