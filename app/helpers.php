@@ -1,36 +1,50 @@
 <?php
 
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Video;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
+
 if (!function_exists('create_default_user')) {
 
     function create_default_user()
     {
-       return User::create([
+       $user=User::create([
             'name' => config('casteaching.default_user.name', 'Estudian'),
             'email' => config('casteaching.default_user.email', 'Falta el mail'),
             'password' => Hash::make(config('casteaching.default_user.password', 'admin'))
 
         ]);
+
+        Team::create([
+            'name'=>$user->name.'s Team',
+            'user_id' => $user->id,
+            'personal_team' =>true
+        ]);
     }
     if (!function_exists('create_default_profe_user')) {
         function create_default_profe_user()
         {
-           return User::create([
+           $user= User::create([
                 'name' => config('casteaching.default_user_profe.name', 'profe'),
                 'email' => config('casteaching.default_user_profe.email', 'info@iesebre.com'),
                 'password' => Hash::make(config('casteaching.default_user_profe.password'))
 
-            ]);
+           ]);
+
+           Team::create([
+               'name'=>$user->name.'s Team',
+               'user_id' => $user->id,
+               'personal_team' =>true
+           ]);
         }
     }
     if (!function_exists('create_default_video')) {
         function create_default_video()
         {
-           return Video::create([
+        return Video::create([
                 'title' => 'Ubuntu 101',
                 'description' => '# Here description',
                 'url' => 'https://youtube/w8j07_DBL_I',
