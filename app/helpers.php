@@ -11,30 +11,31 @@ if (!function_exists('create_default_user')) {
 
     function create_default_user()
     {
-       $user=User::create([
+       $user=User::forceCreate([
             'name' => config('casteaching.default_user.name', 'Estudian'),
             'email' => config('casteaching.default_user.email', 'Falta el mail'),
             'password' => Hash::make(config('casteaching.default_user.password', 'admin'))
 
         ]);
 
-        Team::create([
+        Team::forceCreate([
             'name'=>$user->name.'s Team',
             'user_id' => $user->id,
             'personal_team' =>true
         ]);
+
     }
     if (!function_exists('create_default_profe_user')) {
         function create_default_profe_user()
         {
-           $user= User::create([
+           $user= User::forceCreate([
                 'name' => config('casteaching.default_user_profe.name', 'profe'),
                 'email' => config('casteaching.default_user_profe.email', 'info@iesebre.com'),
                 'password' => Hash::make(config('casteaching.default_user_profe.password'))
 
            ]);
 
-           Team::create([
+           Team::forceCreate([
                'name'=>$user->name.'s Team',
                'user_id' => $user->id,
                'personal_team' =>true

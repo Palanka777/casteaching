@@ -1281,6 +1281,12 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.m-4 {
+	margin: 1rem;
+}
+.m-3 {
+	margin: 0.75rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -1357,8 +1363,14 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mr-4 {
+	margin-right: 1rem;
+}
 .block {
 	display: block;
+}
+.inline-block {
+	display: inline-block;
 }
 .flex {
 	display: flex;
@@ -1462,6 +1474,9 @@ select {
 .max-w-xl {
 	max-width: 36rem;
 }
+.max-w-2xl {
+	max-width: 42rem;
+}
 .max-w-6xl {
 	max-width: 72rem;
 }
@@ -1560,11 +1575,6 @@ select {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-	--tw-space-y-reverse: 0;
-	margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-	margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .overflow-hidden {
 	overflow: hidden;
@@ -1724,6 +1734,9 @@ select {
 }
 .p-6 {
 	padding: 1.5rem;
+}
+.p-4 {
+	padding: 1rem;
 }
 .px-4 {
 	padding-left: 1rem;
@@ -2836,8 +2849,13 @@ select {
 		border-left-width: 1px;
 	}
 
-	.md\:p-3 {
-		padding: 0.75rem;
+	.md\:p-4 {
+		padding: 1rem;
+	}
+
+	.md\:px-6 {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 	}
 }
 @media (min-width: 1024px) {
@@ -3084,18 +3102,6 @@ select {
 		grid-column: span 4 / span 4;
 	}
 
-	.lg\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-		margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
-	}
-
-	.lg\:space-y-4 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-	}
-
 	.lg\:p-5 {
 		padding: 1.25rem;
 	}
@@ -3107,10 +3113,9 @@ select {
 }
 @media (min-width: 1280px) {
 
-	.xl\:space-y-5 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+	.xl\:py-5 {
+		padding-top: 1.25rem;
+		padding-bottom: 1.25rem;
 	}
 }
 @media (min-width: 1536px) {
@@ -3351,18 +3356,6 @@ select {
 
 	.\32xl\:prose-2xl > :last-child {
 		margin-bottom: 0;
-	}
-
-	.\32xl\:space-x-20 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-x-reverse: 0;
-		margin-right: calc(5rem * var(--tw-space-x-reverse));
-		margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
-	}
-
-	.\32xl\:space-y-10 > :not([hidden]) ~ :not([hidden]) {
-		--tw-space-y-reverse: 0;
-		margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
-		margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
 	}
 
 	.\32xl\:px-20 {

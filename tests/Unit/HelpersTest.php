@@ -14,7 +14,6 @@ class HelpersTest extends TestCase
     /**
      * @test
      */
-
     public function create_default_user()
     {
 
@@ -29,7 +28,7 @@ class HelpersTest extends TestCase
         ]) ;
 
 
-        $user=User::find(1);
+        $user= User::find(1);
         $this->assertNotNull($user);
         $this->assertEquals(config('casteaching.default_user.email'), $user->email);
         $this->assertEquals(config('casteaching.default_user.name'), $user->name);
@@ -39,7 +38,6 @@ class HelpersTest extends TestCase
     /**
      * @test
      */
-
     public function create_default_profe_user()
     {
 
