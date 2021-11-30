@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\VideosController;
-use App\Models\Video;
+
+use App\Http\Controllers\VideosManageController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +23,16 @@ Route::get('/', function () {
 
 Route::get('/videos/{id}', [VideosController::class,'show']);
 
-//Route::get('/videos/1', function () {
-//    $video=Video::find(1);
-
-//    $video= new stdClass();
-//    $video->title='Ubuntu 101';
-//    $video->description='# Here description';
-//    $video->published_at='December 13';
-
-//    return view('videos.show',[
-//        'video'=>$video
-//    ]);
-//});
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/manage/videos', [VideosManageController::class,'index'])->middleware(['can:videos_manage_index'])->name('manage.videos');
+
+});
