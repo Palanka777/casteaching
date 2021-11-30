@@ -151,6 +151,43 @@ if (!function_exists('create_default_user')) {
         }
 
     }
+    if (!function_exists('createSampleTest')) {
+
+        function createSampleVideos()
+        {
+            $video1 = Video::create([
+                'title' => 'Video 1',
+                'description' => '# Here description',
+                'url' => 'https://youtube/w8j07_DBL_I',
+                'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
+                'previous' => null,
+                'next' => null,
+                'series_id' => 1
+            ]);
+
+            $video2 = Video::create([
+                'title' => 'Video 2',
+                'description' => '# Here description',
+                'url' => 'https://youtube/w8j07_DBL_I',
+                'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
+                'previous' => null,
+                'next' => null,
+                'series_id' => 1
+            ]);
+
+            $video3 = Video::create([
+                'title' => 'Video 3',
+                'description' => '# Here description',
+                'url' => 'https://youtube/w8j07_DBL_I',
+                'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
+                'previous' => null,
+                'next' => null,
+                'series_id' => 1
+            ]);
+
+            return [$video1, $video2, $video3];
+        }
+    }
 }
 
 
