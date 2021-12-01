@@ -188,6 +188,44 @@ if (!function_exists('create_default_user')) {
             return [$video1, $video2, $video3];
         }
     }
+
+    if (! function_exists('create_user_manager_user')) {
+        function create_user_manager_user() {
+            $user = User::create([
+                'name' => 'UserManager',
+                'email' => 'info@usersmanager.com',
+                'password' => Hash::make('12345678')
+            ]);
+
+            Permission::create(['name' => 'users_manage_index']);
+            $user->givePermissionTo('users_manage_index');
+
+            add_personal_team($user);
+            return $user;
+        }
+    }
+
+    if (! function_exists('create_sample_users')) {
+        function create_sample_users() {
+            $user1 = User::create([
+                'name' => 'User 1',
+                'email' => 'user1@prova.com',
+                'password' => Hash::make('12345678')
+            ]);
+            $user2 = User::create([
+                'name' => 'User 2',
+                'email' => 'user2@prova.com',
+                'password' => Hash::make('12345678')
+            ]);
+            $user3 = User::create([
+                'name' => 'User 3',
+                'email' => 'user3@prova.com',
+                'password' => Hash::make('12345678')
+            ]);
+
+            return [$user1, $user2, $user3];
+        }
+    }
 }
 
 
