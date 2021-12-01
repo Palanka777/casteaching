@@ -81,12 +81,13 @@ if (!function_exists('create_default_user')) {
                 'password'=>Hash::make('12345678'),
             ]);
 
-            add_personal_team($user);
-
             Permission::create(['name' => 'videos_manage_index']);
+            Permission::create(['name' => 'videos_manage_create']);
 
             $user->givePermissionTo('videos_manage_index');
+            $user->givePermissionTo('videos_manage_create');
 
+            add_personal_team($user);
             return $user;
 
         }
@@ -146,6 +147,7 @@ if (!function_exists('create_default_user')) {
             function create_permissions()
             {
                 Permission::firstOrCreate(['name' => 'videos_manage_index']);
+                Permission::firstOrCreate(['name' => 'videos_manage_create']);
             }
 
         }

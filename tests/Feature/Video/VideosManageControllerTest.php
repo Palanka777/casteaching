@@ -2,14 +2,11 @@
 
 namespace Tests\Feature\Video;
 
-use App\Models\Team;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
 
@@ -18,6 +15,44 @@ use Tests\TestCase;
 class VideosManageControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    /** @test */
+
+    public function user_with_permissions_can_see_add_videos()
+    {
+        $this->loginAsVideoManager();
+
+        $response = $this->get('/manage/videos');
+        $response->assertStatus(200);
+        $response->assertViewIs('videos.manage.index');
+        $response->assertSee('<form data-qa="form_video_create"',false);
+
+    }
+
+    /** @test */
+
+    public function regular_user_cannot_see_add_videos()
+    {
+        Permission::firstOrCreate(['name' => 'videos_manage_index']);
+
+        $user= User::create([
+            'name'=>'Pepito',
+            'email'=>'info@pepito',
+            'password'=>'12345678'
+        ]);
+        $user->givePermissionTo('videos_manage_index');
+        Auth::login($user);
+
+        add_personal_team($user);
+
+        $response = $this->get('/manage/videos');
+        $response->assertStatus(200);
+        $response->assertViewIs('videos.manage.index');
+        $response->assertDontSee('<form data-qa="form_video_create"',false);
+
+    }
+
+
     /** @test */
    public function user_with_permissions_can_manage_videos()
     {
