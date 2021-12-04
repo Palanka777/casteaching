@@ -9,12 +9,50 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
+use function PHPUnit\Framework\assertNull;
 
 /** @covers VideosManageController */
 
 class VideosManageControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    /** @test */
+
+    public function user_without_permissions_cannot_store_videos()
+    {
+        $this->loginAsRegularUser();
+
+        $response = $this->post('/manage/videos',[
+            'title'=>'HTTP for noobs',
+            'description'=>'HTTP per petardos',
+            'url'=>'https://www.aranolase.com',
+        ]);
+
+        $response->assertStatus(403);
+        $response->assertSessionHas(null);
+
+        $videoDB = Video::first();
+        $this->assertNull($videoDB);
+
+
+    }
+
+    /** @test */
+
+    public function user_with_permissions_can_destroy_videos(){
+        $this->loginAsVideoManager();
+
+        $video=create_default_video();
+
+        $response = $this->delete('/manage/videos/'.$video->id);
+        $response->assertRedirect(route('manage.videos'));
+
+        $response->assertSessionHas('status','Successfully removed');
+        $this->assertNull(Video::find($video->id));
+
+
+    }
 
     /** @test */
 

@@ -23,7 +23,7 @@
                         {{ __('Manage Videos') }}
                     </x-jet-nav-link>
                     @endcan
-                    @can('users_manage_index')
+                    @can('users_manage_create')
                         <x-jet-nav-link href="/manage/users" :active="request()->routeIs('manage.users')">
                             {{ __('Manage Users') }}
                         </x-jet-nav-link>
