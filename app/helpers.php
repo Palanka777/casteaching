@@ -83,16 +83,15 @@ if (!function_exists('create_default_user')) {
                 'email'=>'videosmanager@casteaching.com',
                 'password'=>Hash::make('12345678'),
             ]);
+            Permission::create(['name' => 'videos_manage_index']);
+            Permission::create(['name' => 'videos_manage_create']);
+            Permission::create(['name' => 'videos_manage_delete']);
+            Permission::create(['name' => 'videos_manage_store']);
 
-            Permission::create(['name' => 'users_manage_index']);
-            Permission::create(['name' => 'users_manage_create']);
-            Permission::create(['name' => 'users_manage_store']);
-            Permission::create(['name' => 'users_manage_destroy']);
-
-            $user->givePermissionTo('users_manage_index');
-            $user->givePermissionTo('users_manage_create');
-            $user->givePermissionTo('users_manage_store');
-            $user->givePermissionTo('users_manage_destroy');
+            $user->givePermissionTo('videos_manage_index');
+            $user->givePermissionTo('videos_manage_create');
+            $user->givePermissionTo('videos_manage_delete');
+            $user->givePermissionTo('videos_manage_store');
 
             add_personal_team($user);
             return $user;
@@ -157,7 +156,13 @@ if (!function_exists('create_default_user')) {
                 Permission::firstOrCreate(['name' => 'videos_manage_create']);
                 Permission::firstOrCreate(['name' => 'videos_manage_delete']);
                 Permission::firstOrCreate(['name' => 'videos_manage_store']);
+
+
+                Permission::firstOrCreate(['name' => 'users_manage_index']);
+                Permission::firstOrCreate(['name' => 'users_manage_create']);
+                Permission::firstOrCreate(['name' => 'users_manage_delete']);
                 Permission::firstOrCreate(['name' => 'users_manage_store']);
+
             }
 
         }
@@ -208,6 +213,7 @@ if (!function_exists('create_default_user')) {
                 'email' => 'usersmanager@casteaching.com',
                 'password' => Hash::make('12345678')
             ]);
+
 
             Permission::create(['name' => 'users_manage_index']);
             Permission::create(['name' => 'users_manage_create']);
