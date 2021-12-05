@@ -84,15 +84,15 @@ if (!function_exists('create_default_user')) {
                 'password'=>Hash::make('12345678'),
             ]);
 
-            Permission::create(['name' => 'videos_manage_index']);
-            Permission::create(['name' => 'videos_manage_create']);
-            Permission::create(['name' => 'videos_manage_delete']);
-            Permission::create(['name' => 'videos_manage_store']);
+            Permission::create(['name' => 'users_manage_index']);
+            Permission::create(['name' => 'users_manage_create']);
+            Permission::create(['name' => 'users_manage_store']);
+            Permission::create(['name' => 'users_manage_destroy']);
 
-            $user->givePermissionTo('videos_manage_index');
-            $user->givePermissionTo('videos_manage_create');
-            $user->givePermissionTo('videos_manage_delete');
-            $user->givePermissionTo('videos_manage_store');
+            $user->givePermissionTo('users_manage_index');
+            $user->givePermissionTo('users_manage_create');
+            $user->givePermissionTo('users_manage_store');
+            $user->givePermissionTo('users_manage_destroy');
 
             add_personal_team($user);
             return $user;
