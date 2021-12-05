@@ -14,9 +14,9 @@ if (!function_exists('create_default_user')) {
     function create_default_user()
     {
         $user = User::forceCreate([
-            'name' => config('casteaching.default_user.name', 'Estudian'),
-            'email' => config('casteaching.default_user.email', 'Falta el mail'),
-            'password' => Hash::make(config('casteaching.default_user.password', 'admin'))
+            'name' => config('casteaching.default_user.name', 'David Pont Lopez'),
+            'email' => config('casteaching.default_user.email', 'dpont@iesebre.com'),
+            'password' => Hash::make(config('casteaching.default_user.password', '12345678'))
 
         ]);
         $user->superadmin=true;
@@ -30,11 +30,14 @@ if (!function_exists('create_default_user')) {
         function create_default_profe_user()
         {
             $user = User::forceCreate([
-                'name' => config('casteaching.default_user_profe.name', 'profe'),
-                'email' => config('casteaching.default_user_profe.email', 'info@iesebre.com'),
-                'password' => Hash::make(config('casteaching.default_user_profe.password'))
+                'name' => config('casteaching.default_user_profe.name', 'Sergi Tur Badenas'),
+                'email' => config('casteaching.default_user_profe.email', 'sergiturbadenas@gmail.com'),
+                'password' => Hash::make(config('casteaching.default_user_profe.password',12345678))
 
             ]);
+
+            $user->superadmin = true;
+            $user->save();
 
             add_personal_team($user);
 
@@ -60,7 +63,7 @@ if (!function_exists('create_default_user')) {
         function create_regular_user(){
             $user = User::create([
                 'name' => 'Pepe Pringao',
-                'email' => 'info@Pepe.com',
+                'email' => 'pringao@casteaching.com',
                 'password' => Hash::make('12345678')
             ]);
 
@@ -77,7 +80,7 @@ if (!function_exists('create_default_user')) {
         function create_videomanager_user(){
             $user=User::create([
                 'name'=>'VideosManager',
-                'email'=>'info@VideosManager.com',
+                'email'=>'videosmanager@casteaching.com',
                 'password'=>Hash::make('12345678'),
             ]);
 
@@ -120,7 +123,7 @@ if (!function_exists('create_default_user')) {
 
                 $user = User::create([
                     'name' => 'SuperAdmin',
-                    'email' => 'info@SuperAdmin.com',
+                    'email' => 'superadmin@casteaching.com',
                     'password' => Hash::make('12345678')
                 ]);
                 $user->superadmin = true;
@@ -202,7 +205,7 @@ if (!function_exists('create_default_user')) {
         function create_user_manager_user() {
             $user = User::create([
                 'name' => 'UserManager',
-                'email' => 'info@usersmanager.com',
+                'email' => 'usersmanager@casteaching.com',
                 'password' => Hash::make('12345678')
             ]);
 
