@@ -9,7 +9,7 @@ return [
 
     'default_user_profe'=>[
     'password'=>env('DEFAULT_USER_PROFE_PASSWORD','1234567'),
-    'name'=>env('DEFAULT_USER_PROFE_NAME','Pepito'),
-    'email'=>env('DEFAULT_USER_PROFE_EMAIL','Pepito@iesebre.com')
+    'name'=>env('DEFAULT_USER_PROFE_NAME','sergi'),
+    'email'=>env('DEFAULT_USER_PROFE_EMAIL','sergi@iesebre.com')
 ]
 ];
