@@ -47,7 +47,7 @@ class UserManageController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('users.manage.edit');
     }
 
     public function update(Request $request, $id)

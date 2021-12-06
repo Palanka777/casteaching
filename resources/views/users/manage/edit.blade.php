@@ -2,67 +2,64 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Videos') }}
+            {{ __('Users') }}
         </h2>
     </x-slot>
 
-    <div class="flex flex-col mt-10">
+    <div class="flex flex-col mt-10 ">
 
         <div class="mx-auto sm:px-6 lg:px-8 w-full max-w-7xl">
             <x-status></x-status>
-
-            @can('videos_manage_create')
-                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mb-1 md:mb-2 lg:mb-4">
+        @can('users_manage_create')
+            <!-- This example requires Tailwind CSS v2.0+ -->
+                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="md:grid md:grid-cols-3 md:gap-6 bg-white md:bg-transparent">
                             <div class="md:col-span-1">
                                 <div class="px-4 py-4 sm:px-6 md:px-4">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Vídeos</h3>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Usuari</h3>
                                     <p class="mt-1 text-sm text-gray-600">
-                                        Informació bàsica del vídeo
+                                        Informació bàsica de l'usuari
                                     </p>
                                 </div>
                             </div>
-                            <div class="md:mt-0 md:col-span-2">
-                                <form data-qa="form_video_create" action="#" method="POST" >
+                            <div class="mt-3 md:mt-0 md:col-span-2">
+                                <form data-qa="form_user_create" action="#" method="POST" >
                                     @csrf
                                     <div class="shadow sm:rounded-md sm:overflow-hidden md:bg-white">
                                         <div class="px-4 py-5 space-y-6 sm:p-6">
 
                                             <div>
-                                                <label for="title" class="block text-sm font-medium text-gray-700">
-                                                    Title
+                                                <label for="name" class="block text-sm font-medium text-gray-700">
+                                                    Name
                                                 </label>
                                                 <div class="mt-1">
-                                                    <input required type="text" id="title" name="title" rows="3" class="shadow-sm mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2" placeholder="Titol"></input>
+                                                    <input required id="name" type="text" name="name" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-2" placeholder="Escriu el teu nom"></input>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-500">
-                                                    Titol curt del vídeo
+                                                    Nom
                                                 </p>
                                             </div>
 
                                             <div>
-                                                <label for="description" class="block text-sm font-medium text-gray-700">
-                                                    Description
+                                                <label for="email" class="block text-sm font-medium text-gray-700">
+                                                    Email
                                                 </label>
                                                 <div class="mt-1">
-                                                    <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escriu una breu descripció del video"></textarea>
+                                                    <input required id="email" type="email" name="email" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="exemple@iesebre.com"></input>
                                                 </div>
                                                 <p class="mt-2 text-sm text-gray-500">
-                                                    Breu descripció del vídeo
+                                                    Email
                                                 </p>
                                             </div>
 
                                             <div class="grid grid-cols-3 gap-6">
                                                 <div class="col-span-3">
-                                                    <label for="url" class="block text-sm font-medium text-gray-700">
-                                                        URL
+                                                    <label for="password" class="block text-sm font-medium text-gray-700">
+                                                        Password
                                                     </label>
                                                     <div class="mt-1 flex rounded-md shadow-sm">
-                                                          <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                                            http://
-                                                          </span>
-                                                        <input required type="url" name="url" id="url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block  rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="youtube.com/">
+                                                        <input required type="password" name="password" id="password" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300" placeholder="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +86,7 @@
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                             <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                Videos
+                                Users
                             </h3>
                         </div>
                         <table class="min-w-full divide-y divide-gray-200">
@@ -99,13 +96,13 @@
                                     Id
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Title
+                                    Name
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Description
+                                    Email
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    URL
+                                    Superadmin
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Actions</span>
@@ -114,37 +111,35 @@
                             </thead>
                             <tbody>
                             <!-- Odd row -->
-                            @foreach($videos as $video)
+                            @foreach($users as $user)
                                 @if($loop->odd)
                                     <tr class="bg-white">
                                 @else
                                     <tr class="bg-gray-100">
                                         @endif
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {{ $video->id }}
+                                            {{ $user->id }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $video->title }}
+                                            {{ $user->name }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $video->description }}
+                                            {{ $user->email }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $video->url }}
+                                            {{ $user->superadmin }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/videos/{{$video->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
-                                            <a href="/manage/videos/{{$video->id}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-
-                                            <form class="inline" action="/manage/videos/{{$video->id}}" method="POST">
+                                            <a href="/users/{{$user->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <form class="inline" action="/manage/users/{{$user->id}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <a href="/videos/{{$video->id}}" class="text-red-600 hover:text-red-900"
+                                                <a href="/users/{{$user->id}}" class="text-indigo-600 hover:text-indigo-900"
                                                    onclick="event.preventDefault();
-                                                   this.closest('form').submit();">Delete</a>
-                                            </form>
-                                        </td>
+                                            this.closest('form').submit();">Delete</a>
+                                            </form>                            </td>
                                     </tr>
                                     @endforeach
                             </tbody>
@@ -156,3 +151,4 @@
     </div>
 
 </x-casteaching-layout>
+

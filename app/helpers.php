@@ -49,7 +49,7 @@ if (!function_exists('create_default_user')) {
             return Video::create([
                 'title' => 'Ubuntu 101',
                 'description' => '# Here description',
-                'url' => 'https://youtube/w8j07_DBL_I',
+                'url' => 'https://www.youtube.com/embed/EjYOBTK8NMQ?list=PLyasg1A0hpk07HA0VCApd4AGd3Xm45LQv',
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
@@ -87,11 +87,15 @@ if (!function_exists('create_default_user')) {
             Permission::create(['name' => 'videos_manage_create']);
             Permission::create(['name' => 'videos_manage_delete']);
             Permission::create(['name' => 'videos_manage_store']);
+            Permission::create(['name' => 'videos_manage_edit']);
+            Permission::create(['name' => 'videos_manage_update']);
 
             $user->givePermissionTo('videos_manage_index');
             $user->givePermissionTo('videos_manage_create');
             $user->givePermissionTo('videos_manage_delete');
             $user->givePermissionTo('videos_manage_store');
+            $user->givePermissionTo('videos_manage_edit');
+            $user->givePermissionTo('videos_manage_update');
 
             add_personal_team($user);
             return $user;
@@ -156,12 +160,16 @@ if (!function_exists('create_default_user')) {
                 Permission::firstOrCreate(['name' => 'videos_manage_create']);
                 Permission::firstOrCreate(['name' => 'videos_manage_delete']);
                 Permission::firstOrCreate(['name' => 'videos_manage_store']);
+                Permission::firstOrCreate(['name' => 'videos_manage_edit']);
+                Permission::firstOrCreate(['name' => 'videos_manage_update']);
 
 
                 Permission::firstOrCreate(['name' => 'users_manage_index']);
                 Permission::firstOrCreate(['name' => 'users_manage_create']);
                 Permission::firstOrCreate(['name' => 'users_manage_delete']);
                 Permission::firstOrCreate(['name' => 'users_manage_store']);
+                Permission::firstOrCreate(['name' => 'users_manage_edit']);
+                Permission::firstOrCreate(['name' => 'users_manage_update']);
 
             }
 
@@ -175,7 +183,7 @@ if (!function_exists('create_default_user')) {
             $video1 = Video::create([
                 'title' => 'Video 1',
                 'description' => '# Here description',
-                'url' => 'https://youtube/w8j07_DBL_I',
+                'url' => 'https://www.youtube.com/embed/DzZKgGM7swk?list=PLyasg1A0hpk07HA0VCApd4AGd3Xm45LQv',
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
@@ -185,7 +193,7 @@ if (!function_exists('create_default_user')) {
             $video2 = Video::create([
                 'title' => 'Video 2',
                 'description' => '# Here description',
-                'url' => 'https://youtube/w8j07_DBL_I',
+                'url' => 'https://www.youtube.com/embed/zyABmm6Dw64?list=PLyasg1A0hpk07HA0VCApd4AGd3Xm45LQv',
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
@@ -195,7 +203,7 @@ if (!function_exists('create_default_user')) {
             $video3 = Video::create([
                 'title' => 'Video 3',
                 'description' => '# Here description',
-                'url' => 'https://youtube/w8j07_DBL_I',
+                'url' => 'https://www.youtube.com/embed/0F_jX4-T4C4',
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
@@ -219,10 +227,16 @@ if (!function_exists('create_default_user')) {
             Permission::create(['name' => 'users_manage_create']);
             Permission::create(['name' => 'users_manage_store']);
             Permission::create(['name' => 'users_manage_destroy']);
+            Permission::create(['name' => 'users_manage_edit']);
+            Permission::create(['name' => 'users_manage_update']);
+
             $user->givePermissionTo('users_manage_index');
             $user->givePermissionTo('users_manage_create');
             $user->givePermissionTo('users_manage_store');
             $user->givePermissionTo('users_manage_destroy');
+            $user->givePermissionTo('users_manage_edit');
+            $user->givePermissionTo('users_manage_update');
+
             add_personal_team($user);
             return $user;
         }

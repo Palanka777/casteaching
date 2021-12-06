@@ -13,9 +13,59 @@ use function PHPUnit\Framework\assertNull;
 
 /** @covers VideosManageController */
 
+// this->withoutExceptionDandling() es per veure els errors http mes descriptius
+
 class VideosManageControllerTest extends TestCase
 {
     use RefreshDatabase;
+    /** @test */
+    public function user_with_permissions_can_update_videos(){
+        $this->loginAsVideoManager();
+
+        $video=create_default_video();
+
+        $response = $this->put('/manage/videos/'.$video->id,[
+            'title' => 'Ubuntu 102',
+            'description' => '# Here description 2',
+            'url' => 'https://youtube/w8j07_DBL_I2',
+
+        ]);
+        $response->assertRedirect(route('manage.videos'));
+        $response->assertSessionHas('status','Successfully updated');
+
+        $newVideo=Video::find($video->id);
+
+        $this->assertEquals('Ubuntu 102',$newVideo->title);
+        $this->assertEquals('# Here description 2',$newVideo->description);
+        $this->assertEquals('https://youtube/w8j07_DBL_I2',$newVideo->url);
+        $this->assertEquals($video->id,$newVideo->id);
+
+
+
+    }
+
+    /** @test */
+
+    public function user_with_permissions_can_see_edit_videos(){
+
+        $this->loginAsVideoManager();
+
+        $video=create_default_video();
+
+        $response = $this->get('/manage/videos/'.$video->id);
+
+        $response->assertStatus(200);
+        $response->assertViewIs('videos.manage.edit');
+        $response->assertViewHas('video', function ($v) use ($video){
+            return $video->is($v);
+        });
+        $response->assertSee('form_video_edit',false);
+        $response->assertSeeText($video->title);
+        $response->assertSeeText($video->description);
+        $response->assertSee($video->url);
+
+
+    }
 
     /** @test */
 
