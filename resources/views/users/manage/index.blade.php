@@ -136,7 +136,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <a href="/users/{{$user->id}}" class="text-indigo-600 hover:text-indigo-900"
+                                                <a href="/users/{{$user->id}}" class="text-indigo-600 hover:text-red-600"
                                                    onclick="event.preventDefault();
                                             this.closest('form').submit();">Delete</a>
                                             </form>                            </td>
