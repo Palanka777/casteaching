@@ -31,7 +31,13 @@ class VideosApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            return Video::create([
+                'title'=>$request->title,
+                'description'=>$request->description,
+                'url'=>$request->url,
+            ]);
+        }
     }
 
     /**
@@ -54,7 +60,14 @@ class VideosApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $video=Video::findOrFail($id);
+
+        $video->title = $request->title;
+        $video->description = $request->description;
+        $video->url = $request->url;
+
+        $video->save();
+        return $video;
     }
 
     /**
@@ -65,6 +78,8 @@ class VideosApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video=Video::findOrFail($id);
+        $video->delete();
+        return $video;
     }
 }
