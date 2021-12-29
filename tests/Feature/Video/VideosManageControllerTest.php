@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertNull;
 
@@ -17,7 +18,7 @@ use function PHPUnit\Framework\assertNull;
 
 class VideosManageControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, CanLogin;
     /** @test */
     public function user_with_permissions_can_update_videos(){
         $this->loginAsVideoManager();
@@ -214,30 +215,5 @@ class VideosManageControllerTest extends TestCase
         $response->assertRedirect(route('login'));
     }
 
-    /** @test */
-    public function superadmins_can_manage_videos()
-    {
-        $this->loginAsSuperAdmin();
 
-        $response = $this->get('/manage/videos');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('videos.manage.index');
-    }
-
-    private function loginAsVideoManager()
-    {
-        Auth::login(create_videomanager_user());
-    }
-
-    private function loginAsSuperAdmin()
-    {
-        Auth::login(create_superadmin_user());
-    }
-
-    private function loginAsRegularUser()
-    {
-        Auth::login(create_regular_user());
-
-    }
 }
