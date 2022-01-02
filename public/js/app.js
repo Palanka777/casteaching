@@ -8023,9 +8023,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               try {
                 _this.getVideos();
-              } catch (_unused) {
-                TODO;
-              }
+              } catch (_unused) {}
 
             case 1:
             case "end":
@@ -27154,13 +27152,45 @@ var render = function () {
               "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg",
           },
           [
-            _vm._m(0),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "bg-white px-4 py-5 border-b border-gray-200 sm:px-6",
+              },
+              [
+                _c(
+                  "h3",
+                  {
+                    staticClass: "text-lg leading-6 font-medium text-gray-900",
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Videos\n                    "
+                    ),
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ml-10",
+                        on: { click: _vm.refresh },
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Refresh\n                    "
+                        ),
+                      ]
+                    ),
+                  ]
+                ),
+              ]
+            ),
             _vm._v(" "),
             _c(
               "table",
               { staticClass: "min-w-full divide-y divide-gray-200" },
               [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -27230,14 +27260,23 @@ var render = function () {
                         "td",
                         {
                           staticClass:
-                            "px-6 py-4 whitespace-nowrap text-right text-sm font-medium",
+                            "flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium",
                         },
                         [
-                          _c("video-show-link", { attrs: { video: video } }),
+                          _c("video-show-link", {
+                            staticClass: "ml-1",
+                            attrs: { video: video },
+                          }),
                           _vm._v(" "),
-                          _c("video-edit-link", { attrs: { video: video } }),
+                          _c("video-edit-link", {
+                            staticClass: "ml-1",
+                            attrs: { video: video },
+                          }),
                           _vm._v(" "),
-                          _c("video-destroy-link", { attrs: { video: video } }),
+                          _c("video-destroy-link", {
+                            staticClass: "ml-1",
+                            attrs: { video: video },
+                          }),
                         ],
                         1
                       ),
@@ -27254,27 +27293,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "bg-white px-4 py-5 border-b border-gray-200 sm:px-6" },
-      [
-        _c(
-          "h3",
-          { staticClass: "text-lg leading-6 font-medium text-gray-900" },
-          [
-            _vm._v("\n                    Videos\n                    "),
-            _c("button", [
-              _vm._v("\n                        Refresh\n                    "),
-            ]),
-          ]
-        ),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

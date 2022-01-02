@@ -5,7 +5,7 @@
                 <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
                         Videos
-                        <button>
+                        <button @click="refresh" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ml-10">
                             Refresh
                         </button>
                     </h3>
@@ -46,10 +46,10 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ video.url }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <video-show-link :video="video"></video-show-link>
-                            <video-edit-link :video="video"></video-edit-link>
-                            <video-destroy-link :video="video"></video-destroy-link>
+                        <td class="flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <video-show-link class="ml-1" :video="video" ></video-show-link>
+                            <video-edit-link class="ml-1" :video="video" ></video-edit-link>
+                            <video-destroy-link class="ml-1" :video="video" ></video-destroy-link>
                         </td>
                     </tr>
                     </tbody>
@@ -64,12 +64,13 @@ import VideoShowLink from "./VideoShowLink";
 import VideoEditLink from "./VideoEditLink";
 import VideoDestroyLink from "./VideoDestroyLink";
 
+
 export default {
     name: "VideosList",
     components: {
         'video-show-link' : VideoShowLink,
         'video-edit-link' : VideoEditLink,
-        'video-destroy-link' : VideoDestroyLink
+        'video-destroy-link' : VideoDestroyLink,
     },
     data() {
         return {
@@ -97,8 +98,9 @@ export default {
     async created(){
         try{
             this.getVideos()
+
         }catch{
-            TODO
+
         }
     },
 
@@ -115,5 +117,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>
