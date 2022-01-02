@@ -7511,13 +7511,15 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+ //TOKEN SfDeLlzPG3rGpvK9ihoCiCbNFuEwTNMOBaDxTuTT
 
 var apiClient = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
   baseURL: 'http://casteaching.test/api',
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     Accept: 'application/json',
-    'Content-type': 'application/json'
+    'Content-type': 'application/json',
+    Authorization: 'Bearer SfDeLlzPG3rGpvK9ihoCiCbNFuEwTNMOBaDxTuTT'
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -7975,6 +7977,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -8016,27 +8021,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return window.casteaching.videos();
+              try {
+                _this.getVideos();
+              } catch (_unused) {
+                TODO;
+              }
 
-            case 3:
-              _this.videos = _context.sent;
-              _context.next = 9;
-              break;
-
-            case 6:
-              _context.prev = 6;
-              _context.t0 = _context["catch"](0);
-              TODO;
-
-            case 9:
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 6]]);
+      }, _callee);
     }))();
+  },
+  methods: {
+    getVideos: function getVideos() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return window.casteaching.videos();
+
+              case 2:
+                _this2.videos = _context2.sent;
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    refresh: function refresh() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.getVideos();
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    }
   }
 });
 
@@ -26985,29 +27024,7 @@ var render = function () {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "px-4 py-3 bg-gray-50 text-right sm:px-6",
-                          },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-                                attrs: { type: "submit" },
-                                on: { click: _vm.store },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                new\n                            "
-                                ),
-                              ]
-                            ),
-                          ]
-                        ),
+                        _vm._m(1),
                       ]
                     ),
                   ]
@@ -27040,6 +27057,30 @@ var staticRenderFns = [
         ]),
       ]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "px-4 py-3 bg-gray-50 text-right sm:px-6" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
+            attrs: { type: "submit" },
+          },
+          [
+            _vm._v(
+              "\n                                new\n                            "
+            ),
+          ]
+        ),
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -27224,7 +27265,12 @@ var staticRenderFns = [
         _c(
           "h3",
           { staticClass: "text-lg leading-6 font-medium text-gray-900" },
-          [_vm._v("\n                    Videos\n                ")]
+          [
+            _vm._v("\n                    Videos\n                    "),
+            _c("button", [
+              _vm._v("\n                        Refresh\n                    "),
+            ]),
+          ]
         ),
       ]
     )
