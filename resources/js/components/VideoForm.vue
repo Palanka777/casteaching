@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import eventBus from '../eventBus'
 export default {
     name: "VideoForm",
     data(){
@@ -79,11 +80,19 @@ export default {
     },
     methods:{
         store(){
-            window.casteaching.video.create({
-              title:this.video.title,
-              url: this.video.url,
-              description:this.video.description
-            })
+
+            try{
+                window.casteaching.video.create({
+                    title:this.video.title,
+                    url: this.video.url,
+                    description:this.video.description
+                })
+                eventBus.$emit('created')
+                eventBus.$emit('status', 'Video create successfully')
+            }catch(error){
+                console.log(error);
+            }
+
         }
     }
 }

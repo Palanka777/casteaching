@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import eventBus from "../eventBus";
+
 export default {
     name: "VideoShowLink",
     props: {
@@ -19,8 +21,10 @@ export default {
         async remove(){
             try{
                 await window.casteaching.video.destroy(this.video.id)
-            }catch{
-
+                this.$emit('removed')
+                eventBus.$emit('status', 'Video '+ this.video.title+ ' remove successfully')
+            }catch(error){
+                console.log(error)
             }
         }
     }
