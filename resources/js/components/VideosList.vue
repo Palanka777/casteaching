@@ -103,6 +103,9 @@ export default {
             eventBus.$on('created',() => {
                 this.refresh()
             });
+            eventBus.$on('updated',() => {
+                this.refresh()
+            });
         }catch(err){
 
         }

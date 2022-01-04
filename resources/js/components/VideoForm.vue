@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="md:mt-0 md:col-span-2">
-                    <form data-qa="form_video_create" @submit.prevent="store" method="POST" >
+                    <form data-qa="form_video_create" @submit.prevent="save" method="POST" >
                         <div class="shadow sm:rounded-md sm:overflow-hidden md:bg-white">
                             <div class="px-4 py-5 space-y-6 sm:p-6">
 
@@ -58,7 +58,8 @@
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                 <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    new
+                                    <span v-if="status==='creating'">New</span>
+                                    <span v-if="status==='editing'">Edit</span>
                                 </button>
                             </div>
                         </div>
@@ -75,10 +76,21 @@ export default {
     name: "VideoForm",
     data(){
       return{
-          video:{}
+          video:{},
+          status:'creating'
       }
     },
     methods:{
+
+        save(){
+            if (this.status==='creating'){
+                this.store();
+            }
+            if (this.status==='editing'){
+                this.update();
+            }
+        },
+
         store(){
 
             try{
@@ -93,7 +105,28 @@ export default {
                 console.log(error);
             }
 
+        },
+        update(){
+
+            try{
+                window.casteaching.video.update(this.video.id,{
+                    title:this.video.title,
+                    url: this.video.url,
+                    description:this.video.description
+                })
+                eventBus.$emit('updated')
+                eventBus.$emit('status', 'Video updated successfully')
+            }catch(error){
+                console.log(error);
+            }
+
         }
+    },
+    created() {
+        eventBus.$on('edit',(video)=>{
+            this.video=video
+            this.status='editing'
+        })
     }
 }
 </script>

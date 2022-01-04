@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="'/videos/' + video.id" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
+        <a :href="'/videos/' + video.id" target="_blank" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Show</a>
 
     </div>
 </template>

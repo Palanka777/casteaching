@@ -1,8 +1,10 @@
 <template>
-    <a :href="'/manage/videos/' + video.id" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+    <a @click="edit" target="_blank" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Edit</a>
 </template>
 
 <script>
+import eventBus from "../eventBus";
+
 export default {
     name: "VideoEditLink",
     props: {
@@ -10,6 +12,11 @@ export default {
             type: Object,
             required: false
         }
+    },
+    methods: {
+      edit(){
+          eventBus.$emit('edit',this.video)
+      }
     }
 }
 </script>
