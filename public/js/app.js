@@ -1,35 +1,90 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./casteaching_package/node_modules/axios/index.js":
-/*!*********************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/index.js ***!
-  \*********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ "./node_modules/@acacha/casteaching/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-module.exports = __webpack_require__(/*! ./lib/axios */ "./casteaching_package/node_modules/axios/lib/axios.js");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/@acacha/casteaching/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+// TOKEN YSqXe8KJiHfx3Z9MGaoic0heLIZ0ifv9ZODV30r0
+const apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+    baseURL: 'http://casteaching.test/api',
+    withCredentials: true,
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer YSqXe8KJiHfx3Z9MGaoic0heLIZ0ifv9ZODV30r0'
+    }
+})
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+    videos: async function() {
+        const response = await apiClient.get('/videos')
+        return response.data
+    },
+    video: {
+        show: async function(id) {
+            const response = await apiClient.get('/videos/' + id)
+            return response.data
+        },
+        create: async function(data) {
+            const response = await apiClient.post('/videos',data)
+            return response.data
+        },
+        update: async function(id, data) {
+            const response = await apiClient.put('/videos/' + id,data)
+            return response.data
+        },
+        destroy: async function(id) {
+            const response = await apiClient.delete('/videos/' + id)
+            return response.data
+        },
+    }
+});
+
+
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/adapters/xhr.js":
-/*!********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/adapters/xhr.js ***!
-  \********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/index.js ***!
+  \**********************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/axios.js");
+
+/***/ }),
+
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/adapters/xhr.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/adapters/xhr.js ***!
+  \*********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var settle = __webpack_require__(/*! ./../core/settle */ "./casteaching_package/node_modules/axios/lib/core/settle.js");
-var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./casteaching_package/node_modules/axios/lib/helpers/cookies.js");
-var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./casteaching_package/node_modules/axios/lib/helpers/buildURL.js");
-var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./casteaching_package/node_modules/axios/lib/core/buildFullPath.js");
-var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./casteaching_package/node_modules/axios/lib/helpers/parseHeaders.js");
-var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./casteaching_package/node_modules/axios/lib/helpers/isURLSameOrigin.js");
-var createError = __webpack_require__(/*! ../core/createError */ "./casteaching_package/node_modules/axios/lib/core/createError.js");
-var defaults = __webpack_require__(/*! ../defaults */ "./casteaching_package/node_modules/axios/lib/defaults.js");
-var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./casteaching_package/node_modules/axios/lib/cancel/Cancel.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/cookies.js");
+var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/buildURL.js");
+var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/buildFullPath.js");
+var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/parseHeaders.js");
+var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isURLSameOrigin.js");
+var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/createError.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js");
+var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -234,20 +289,20 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/axios.js":
-/*!*************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/axios.js ***!
-  \*************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/axios.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/axios.js ***!
+  \**************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var bind = __webpack_require__(/*! ./helpers/bind */ "./casteaching_package/node_modules/axios/lib/helpers/bind.js");
-var Axios = __webpack_require__(/*! ./core/Axios */ "./casteaching_package/node_modules/axios/lib/core/Axios.js");
-var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./casteaching_package/node_modules/axios/lib/core/mergeConfig.js");
-var defaults = __webpack_require__(/*! ./defaults */ "./casteaching_package/node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/bind.js");
+var Axios = __webpack_require__(/*! ./core/Axios */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/Axios.js");
+var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/mergeConfig.js");
+var defaults = __webpack_require__(/*! ./defaults */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js");
 
 /**
  * Create an instance of Axios
@@ -280,19 +335,19 @@ var axios = createInstance(defaults);
 axios.Axios = Axios;
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./casteaching_package/node_modules/axios/lib/cancel/Cancel.js");
-axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./casteaching_package/node_modules/axios/lib/cancel/CancelToken.js");
-axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./casteaching_package/node_modules/axios/lib/cancel/isCancel.js");
-axios.VERSION = (__webpack_require__(/*! ./env/data */ "./casteaching_package/node_modules/axios/lib/env/data.js").version);
+axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js");
+axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/CancelToken.js");
+axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/isCancel.js");
+axios.VERSION = (__webpack_require__(/*! ./env/data */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/env/data.js").version);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(/*! ./helpers/spread */ "./casteaching_package/node_modules/axios/lib/helpers/spread.js");
+axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/spread.js");
 
 // Expose isAxiosError
-axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./casteaching_package/node_modules/axios/lib/helpers/isAxiosError.js");
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -302,10 +357,10 @@ module.exports["default"] = axios;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/cancel/Cancel.js":
-/*!*********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/cancel/Cancel.js ***!
-  \*********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js ***!
+  \**********************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -332,16 +387,16 @@ module.exports = Cancel;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/cancel/CancelToken.js":
-/*!**************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/cancel/CancelToken.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/CancelToken.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/CancelToken.js ***!
+  \***************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(/*! ./Cancel */ "./casteaching_package/node_modules/axios/lib/cancel/Cancel.js");
+var Cancel = __webpack_require__(/*! ./Cancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js");
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -462,10 +517,10 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/cancel/isCancel.js":
-/*!***********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/cancel/isCancel.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/isCancel.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/isCancel.js ***!
+  \************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -478,21 +533,21 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/Axios.js":
-/*!******************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/Axios.js ***!
-  \******************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/Axios.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/Axios.js ***!
+  \*******************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./casteaching_package/node_modules/axios/lib/helpers/buildURL.js");
-var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./casteaching_package/node_modules/axios/lib/core/InterceptorManager.js");
-var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./casteaching_package/node_modules/axios/lib/core/dispatchRequest.js");
-var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./casteaching_package/node_modules/axios/lib/core/mergeConfig.js");
-var validator = __webpack_require__(/*! ../helpers/validator */ "./casteaching_package/node_modules/axios/lib/helpers/validator.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/buildURL.js");
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/InterceptorManager.js");
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/dispatchRequest.js");
+var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/mergeConfig.js");
+var validator = __webpack_require__(/*! ../helpers/validator */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/validator.js");
 
 var validators = validator.validators;
 /**
@@ -637,16 +692,16 @@ module.exports = Axios;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/InterceptorManager.js":
-/*!*******************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/InterceptorManager.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/InterceptorManager.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/InterceptorManager.js ***!
+  \********************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 function InterceptorManager() {
   this.handlers = [];
@@ -702,17 +757,17 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/buildFullPath.js":
-/*!**************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/buildFullPath.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/buildFullPath.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/buildFullPath.js ***!
+  \***************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ "./casteaching_package/node_modules/axios/lib/helpers/isAbsoluteURL.js");
-var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ "./casteaching_package/node_modules/axios/lib/helpers/combineURLs.js");
+var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAbsoluteURL.js");
+var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/combineURLs.js");
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -733,16 +788,16 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/createError.js":
-/*!************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/createError.js ***!
-  \************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/createError.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/createError.js ***!
+  \*************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(/*! ./enhanceError */ "./casteaching_package/node_modules/axios/lib/core/enhanceError.js");
+var enhanceError = __webpack_require__(/*! ./enhanceError */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/enhanceError.js");
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -762,20 +817,20 @@ module.exports = function createError(message, config, code, request, response) 
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/dispatchRequest.js":
-/*!****************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/dispatchRequest.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/dispatchRequest.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/dispatchRequest.js ***!
+  \*****************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var transformData = __webpack_require__(/*! ./transformData */ "./casteaching_package/node_modules/axios/lib/core/transformData.js");
-var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./casteaching_package/node_modules/axios/lib/cancel/isCancel.js");
-var defaults = __webpack_require__(/*! ../defaults */ "./casteaching_package/node_modules/axios/lib/defaults.js");
-var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./casteaching_package/node_modules/axios/lib/cancel/Cancel.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var transformData = __webpack_require__(/*! ./transformData */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/transformData.js");
+var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/isCancel.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js");
+var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/cancel/Cancel.js");
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -860,10 +915,10 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/enhanceError.js":
-/*!*************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/enhanceError.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/enhanceError.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/enhanceError.js ***!
+  \**************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -914,16 +969,16 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/mergeConfig.js":
-/*!************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/mergeConfig.js ***!
-  \************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/mergeConfig.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/mergeConfig.js ***!
+  \*************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 /**
  * Config-specific merge-function which creates a new config-object
@@ -1024,16 +1079,16 @@ module.exports = function mergeConfig(config1, config2) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/settle.js":
-/*!*******************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/settle.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/settle.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/settle.js ***!
+  \********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var createError = __webpack_require__(/*! ./createError */ "./casteaching_package/node_modules/axios/lib/core/createError.js");
+var createError = __webpack_require__(/*! ./createError */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/createError.js");
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1060,17 +1115,17 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/core/transformData.js":
-/*!**************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/core/transformData.js ***!
-  \**************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/transformData.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/core/transformData.js ***!
+  \***************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var defaults = __webpack_require__(/*! ./../defaults */ "./casteaching_package/node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var defaults = __webpack_require__(/*! ./../defaults */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js");
 
 /**
  * Transform the data for a request or a response
@@ -1093,19 +1148,19 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/defaults.js":
-/*!****************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/defaults.js ***!
-  \****************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/defaults.js ***!
+  \*****************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
-var utils = __webpack_require__(/*! ./utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./casteaching_package/node_modules/axios/lib/helpers/normalizeHeaderName.js");
-var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./casteaching_package/node_modules/axios/lib/core/enhanceError.js");
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
+var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/core/enhanceError.js");
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1121,10 +1176,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ "./casteaching_package/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/xhr */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/adapters/xhr.js");
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ "./casteaching_package/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/http */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/adapters/xhr.js");
   }
   return adapter;
 }
@@ -1239,10 +1294,10 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/env/data.js":
-/*!****************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/env/data.js ***!
-  \****************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/env/data.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/env/data.js ***!
+  \*****************************************************************************/
 /***/ ((module) => {
 
 module.exports = {
@@ -1251,10 +1306,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/bind.js":
-/*!********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/bind.js ***!
-  \********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/bind.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/bind.js ***!
+  \*********************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1273,16 +1328,16 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/buildURL.js":
-/*!************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/buildURL.js ***!
-  \************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/buildURL.js":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/buildURL.js ***!
+  \*************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -1354,10 +1409,10 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/combineURLs.js":
-/*!***************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/combineURLs.js ***!
-  \***************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/combineURLs.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/combineURLs.js ***!
+  \****************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1379,16 +1434,16 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/cookies.js":
-/*!***********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/cookies.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/cookies.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/cookies.js ***!
+  \************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1443,10 +1498,10 @@ module.exports = (
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/isAbsoluteURL.js":
-/*!*****************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
-  \*****************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAbsoluteURL.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
+  \******************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1468,10 +1523,10 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/isAxiosError.js":
-/*!****************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/isAxiosError.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAxiosError.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \*****************************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1490,16 +1545,16 @@ module.exports = function isAxiosError(payload) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/isURLSameOrigin.js":
-/*!*******************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isURLSameOrigin.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
+  \********************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1569,16 +1624,16 @@ module.exports = (
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/normalizeHeaderName.js":
-/*!***********************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/normalizeHeaderName.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
+  \************************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -1592,16 +1647,16 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/parseHeaders.js":
-/*!****************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/parseHeaders.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/parseHeaders.js":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/parseHeaders.js ***!
+  \*****************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./casteaching_package/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js");
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -1656,10 +1711,10 @@ module.exports = function parseHeaders(headers) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/spread.js":
-/*!**********************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/spread.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/spread.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/spread.js ***!
+  \***********************************************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1694,16 +1749,16 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/helpers/validator.js":
-/*!*************************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/helpers/validator.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/validator.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/validator.js ***!
+  \**************************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var VERSION = (__webpack_require__(/*! ../env/data */ "./casteaching_package/node_modules/axios/lib/env/data.js").version);
+var VERSION = (__webpack_require__(/*! ../env/data */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/env/data.js").version);
 
 var validators = {};
 
@@ -1787,16 +1842,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./casteaching_package/node_modules/axios/lib/utils.js":
-/*!*************************************************************!*\
-  !*** ./casteaching_package/node_modules/axios/lib/utils.js ***!
-  \*************************************************************/
+/***/ "./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@acacha/casteaching/node_modules/axios/lib/utils.js ***!
+  \**************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var bind = __webpack_require__(/*! ./helpers/bind */ "./casteaching_package/node_modules/axios/lib/helpers/bind.js");
+var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/@acacha/casteaching/node_modules/axios/lib/helpers/bind.js");
 
 // utils is a library of generic helper functions non-specific to axios
 
@@ -7490,185 +7545,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./casteaching_package/index.js":
-/*!**************************************!*\
-  !*** ./casteaching_package/index.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./casteaching_package/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
- //TOKEN SfDeLlzPG3rGpvK9ihoCiCbNFuEwTNMOBaDxTuTT
-
-var apiClient = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
-  baseURL: 'http://casteaching.test/api',
-  withCredentials: true,
-  headers: {
-    Accept: 'application/json',
-    'Content-type': 'application/json',
-    Authorization: 'Bearer SfDeLlzPG3rGpvK9ihoCiCbNFuEwTNMOBaDxTuTT'
-  }
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  videos: function () {
-    var _videos = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return apiClient.get('/videos');
-
-            case 2:
-              response = _context.sent;
-              return _context.abrupt("return", response.data);
-
-            case 4:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    function videos() {
-      return _videos.apply(this, arguments);
-    }
-
-    return videos;
-  }(),
-  video: {
-    show: function () {
-      var _show = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return apiClient.get('/videos/' + id);
-
-              case 2:
-                response = _context2.sent;
-                return _context2.abrupt("return", response.data);
-
-              case 4:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function show(_x) {
-        return _show.apply(this, arguments);
-      }
-
-      return show;
-    }(),
-    create: function () {
-      var _create = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return apiClient.post('/videos', data);
-
-              case 2:
-                response = _context3.sent;
-                return _context3.abrupt("return", response.data);
-
-              case 4:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }));
-
-      function create(_x2) {
-        return _create.apply(this, arguments);
-      }
-
-      return create;
-    }(),
-    update: function () {
-      var _update = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id, data) {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return apiClient.put('/videos/' + id, data);
-
-              case 2:
-                response = _context4.sent;
-                return _context4.abrupt("return", response.data);
-
-              case 4:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }));
-
-      function update(_x3, _x4) {
-        return _update.apply(this, arguments);
-      }
-
-      return update;
-    }(),
-    destroy: function () {
-      var _destroy = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return apiClient["delete"]('/videos/' + id);
-
-              case 2:
-                response = _context5.sent;
-                return _context5.abrupt("return", response.data);
-
-              case 4:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }));
-
-      function destroy(_x5) {
-        return _destroy.apply(this, arguments);
-      }
-
-      return destroy;
-    }()
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Status.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Status.vue?vue&type=script&lang=js& ***!
@@ -8214,7 +8090,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_VideosList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/VideosList */ "./resources/js/components/VideosList.vue");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-/* harmony import */ var casteaching__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! casteaching */ "./casteaching_package/index.js");
+/* harmony import */ var _acacha_casteaching__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @acacha/casteaching */ "./node_modules/@acacha/casteaching/index.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _components_VideoForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/VideoForm */ "./resources/js/components/VideoForm.vue");
 /* harmony import */ var _components_Status__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Status */ "./resources/js/components/Status.vue");
@@ -8228,7 +8104,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-window.casteaching = casteaching__WEBPACK_IMPORTED_MODULE_2__["default"];
+window.casteaching = _acacha_casteaching__WEBPACK_IMPORTED_MODULE_2__["default"];
 window.Vue = vue__WEBPACK_IMPORTED_MODULE_5__["default"];
 window.Vue.component('videos-list', _components_VideosList__WEBPACK_IMPORTED_MODULE_0__["default"]);
 window.Vue.component('video-form', _components_VideoForm__WEBPACK_IMPORTED_MODULE_3__["default"]);

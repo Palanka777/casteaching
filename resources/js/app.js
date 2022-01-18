@@ -1,6 +1,6 @@
 import VideosList from "./components/VideosList";
 import Alpine from 'alpinejs';
-import casteaching_palanka from 'casteaching'
+import casteaching from '@acacha/casteaching'
 import Vue from 'vue'
 import VideoForm from "./components/VideoForm";
 import Status from "./components/Status";
@@ -8,7 +8,7 @@ import Status from "./components/Status";
 require('./bootstrap');
 
 window.Alpine = Alpine;
-window.casteaching = casteaching_palanka;
+window.casteaching = casteaching;
 window.Vue = Vue
 
 window.Vue.component('videos-list', VideosList)
