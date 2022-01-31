@@ -2,11 +2,13 @@
 
 namespace Tests\Feature\Video;
 
+use App\Events\VideoCreated;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
 use function PHPUnit\Framework\assertNull;
@@ -116,11 +118,15 @@ class VideosManageControllerTest extends TestCase
             'url'=>'https://www.aranolase.com',
         ]);
 
+        Event::fake();
+
         $response = $this->post('/manage/videos',[
             'title'=>'HTTP for noobs',
             'description'=>'HTTP per petardos',
             'url'=>'https://www.aranolase.com',
         ]);
+
+        Event::assertDispatched(VideoCreated::class);
 
         $response->assertRedirect(route('manage.videos'));
         $response->assertSessionHas('status','Successfully created');

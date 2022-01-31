@@ -11,5 +11,11 @@ return [
     'password'=>env('DEFAULT_USER_PROFE_PASSWORD','1234567'),
     'name'=>env('DEFAULT_USER_PROFE_NAME','sergi'),
     'email'=>env('DEFAULT_USER_PROFE_EMAIL','sergi@iesebre.com')
-]
+],
+    'admins'=>[
+        'Pepito@iesebre.com',
+        'sergi@iesebre.com',
+        'davidpalanca@iesebre.com',
+        'sergiturbadenas@gmail.com',
+    ]
 ];
