@@ -17,5 +17,6 @@ return [
         'sergi@iesebre.com',
         'davidpalanca@iesebre.com',
         'sergiturbadenas@gmail.com',
+        'dpont@iesebre.com',
     ]
 ];

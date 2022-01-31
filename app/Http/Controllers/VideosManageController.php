@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use PHPUnit\Util\Test;
 use Tests\Feature\Video\VideosManageControllerTest;
 use Tests\TestCase;
+use RedisFacade;
 
 class VideosManageController extends Controller
 {
