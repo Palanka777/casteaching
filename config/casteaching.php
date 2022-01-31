@@ -13,10 +13,6 @@ return [
     'email'=>env('DEFAULT_USER_PROFE_EMAIL','sergi@iesebre.com')
 ],
     'admins'=>[
-        'Pepito@iesebre.com',
-        'sergi@iesebre.com',
-        'davidpalanca@iesebre.com',
-        'sergiturbadenas@gmail.com',
         'dpont@iesebre.com',
     ]
 ];
