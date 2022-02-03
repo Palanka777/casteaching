@@ -8104,15 +8104,19 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-window.casteaching = _acacha_casteaching__WEBPACK_IMPORTED_MODULE_2__["default"];
-window.Vue = vue__WEBPACK_IMPORTED_MODULE_5__["default"];
-window.Vue.component('videos-list', _components_VideosList__WEBPACK_IMPORTED_MODULE_0__["default"]);
-window.Vue.component('video-form', _components_VideoForm__WEBPACK_IMPORTED_MODULE_3__["default"]);
-window.Vue.component('status', _components_Status__WEBPACK_IMPORTED_MODULE_4__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
-var app = new window.Vue({
-  el: '#app'
-});
+window.casteaching = (0,_acacha_casteaching__WEBPACK_IMPORTED_MODULE_2__["default"])();
+var vueApp = document.querySelector('#app');
+
+if (vueApp) {
+  window.Vue = vue__WEBPACK_IMPORTED_MODULE_5__["default"];
+  window.Vue.component('videos-list', _components_VideosList__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  window.Vue.component('video-form', _components_VideoForm__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  window.Vue.component('status', _components_Status__WEBPACK_IMPORTED_MODULE_4__["default"]);
+  var app = new window.Vue({
+    el: '#app'
+  });
+}
 
 /***/ }),
 

@@ -35,7 +35,7 @@
     @endif
 
     <!-- Page Content -->
-        <main id="app">
+        <main>
             {{ $slot }}
         </main>
     </div>
