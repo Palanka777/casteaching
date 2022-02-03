@@ -9,7 +9,7 @@ require('./bootstrap');
 
 window.Alpine = Alpine;
 Alpine.start();
-window.casteaching = casteaching();
+window.casteaching = casteaching({baseUrl:'/api'});
 
 const vueApp = document.querySelector('#app')
 
