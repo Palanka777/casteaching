@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SanctumTokenController;
 use App\Http\Controllers\UserManageController;
 use App\Http\Controllers\VideosController;
 

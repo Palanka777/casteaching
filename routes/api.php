@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SanctumTokenController;
 use App\Http\Controllers\VideosApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,9 @@ sleep(1);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/sanctum/token', SanctumTokenController::class);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/videos', [VideosApiController::class,'store'])->middleware(['can:videos_manage_store']);
