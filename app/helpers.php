@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Serie;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Video;
@@ -19,7 +20,7 @@ if (!function_exists('create_default_user')) {
             'password' => Hash::make(config('casteaching.default_user.password', '12345678'))
 
         ]);
-        $user->superadmin=true;
+        $user->superadmin = true;
         $user->save();
 
         add_personal_team($user);
@@ -32,7 +33,7 @@ if (!function_exists('create_default_user')) {
             $user = User::forceCreate([
                 'name' => config('casteaching.default_user_profe.name', 'Sergi Tur Badenas'),
                 'email' => config('casteaching.default_user_profe.email', 'sergiturbadenas@gmail.com'),
-                'password' => Hash::make(config('casteaching.default_user_profe.password',12345678))
+                'password' => Hash::make(config('casteaching.default_user_profe.password', 12345678))
 
             ]);
 
@@ -60,7 +61,8 @@ if (!function_exists('create_default_user')) {
 
     if (!function_exists('create_regular_user')) {
 
-        function create_regular_user(){
+        function create_regular_user()
+        {
             $user = User::create([
                 'name' => 'Pepe Pringao',
                 'email' => 'pringao@casteaching.com',
@@ -73,15 +75,16 @@ if (!function_exists('create_default_user')) {
 
         }
 
-  }
+    }
 
     if (!function_exists('create_videomanager_user')) {
 
-        function create_videomanager_user(){
-            $user=User::create([
-                'name'=>'VideosManager',
-                'email'=>'videosmanager@casteaching.com',
-                'password'=>Hash::make('12345678'),
+        function create_videomanager_user()
+        {
+            $user = User::create([
+                'name' => 'VideosManager',
+                'email' => 'videosmanager@casteaching.com',
+                'password' => Hash::make('12345678'),
             ]);
             Permission::create(['name' => 'videos_manage_index']);
             Permission::create(['name' => 'videos_manage_create']);
@@ -214,8 +217,9 @@ if (!function_exists('create_default_user')) {
         }
     }
 
-    if (! function_exists('create_user_manager_user')) {
-        function create_user_manager_user() {
+    if (!function_exists('create_user_manager_user')) {
+        function create_user_manager_user()
+        {
             $user = User::create([
                 'name' => 'UserManager',
                 'email' => 'usersmanager@casteaching.com',
@@ -242,8 +246,9 @@ if (!function_exists('create_default_user')) {
         }
     }
 
-    if (! function_exists('create_sample_users')) {
-        function create_sample_users() {
+    if (!function_exists('create_sample_users')) {
+        function create_sample_users()
+        {
             $user1 = User::create([
                 'name' => 'User 1',
                 'email' => 'user1@prova.com',
@@ -311,7 +316,7 @@ if (!function_exists('create_default_user')) {
 
         public function __toString()
         {
-            return (string) collect($this->data);
+            return (string)collect($this->data);
         }
 
         /**
@@ -329,12 +334,48 @@ if (!function_exists('create_default_user')) {
     }
 
 
-    if (! function_exists('objectify')) {
+    if (!function_exists('objectify')) {
         function objectify($array)
         {
             return new DomainObject($array);
         }
     }
-}
 
+    if (!function_exists('create_sample_series')){
+
+        function create_sample_series()
+        {
+            $serie1 = Serie::create([
+                'title' => 'TDD (Test Driven Development)',
+                'description' => 'Bla bla bla',
+                'image' => 'tdd.png',
+                'teacher_name' => 'David Pont Lopez',
+                'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('dpont@iesebre.com'),
+                //'created_at' => Carbon::now()->addSeconds(1)
+            ]);
+
+            sleep(1);
+            $serie2 = Serie::create([
+                'title' => 'Crud amb Vue Laravel',
+                'description' => 'Bla bla bla',
+                'image' => 'crud.jpg',
+                'teacher_name' => 'David Pont Lopez',
+                'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('dpont@iesebre.com'),
+                //'created_at' => Carbon::now()->addSeconds(1)
+            ]);
+
+            sleep(1);
+            $serie3 = Serie::create([
+                'title' => 'Ionic Real World',
+                'description' => 'Bla bla bla',
+                'image' => 'ionic_real_world.png',
+                'teacher_name' => 'David Pont Lopez',
+                'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('dpont@iesebre.com'),
+                //'created_at' => Carbon::now()->addSeconds(1)
+            ]);
+
+            return [$serie1,$serie2,$serie3];
+        }
+    }
+}
 
