@@ -2,17 +2,22 @@
 
 namespace Tests\Unit;
 
+use App\Models\Serie;
 use App\Models\Video;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use phpDocumentor\Reflection\Types\This;
 use Tests\TestCase;
+
+/**
+ * @covers \App\Models\Video
+ */
 
 class VideoTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-    @test
-     */
+
+    /** @test */
     public function can_get_formatted_pusblished_at_date()
     {
 
@@ -26,7 +31,7 @@ class VideoTest extends TestCase
             'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
             'previous' => null,
             'next' => null,
-            'series_id' => 1
+            'serie_id' => 1
         ]);
 
         // 2- Execucio WISHFUL PROGRAMMING
@@ -49,7 +54,7 @@ class VideoTest extends TestCase
             'published_at' => null,
             'previous' => null,
             'next' => null,
-            'series_id' => 1
+            'serie_id' => 1
         ]);
 
         // 2- Execucio WISHFUL PROGRAMMING
@@ -57,5 +62,26 @@ class VideoTest extends TestCase
 
         // 3-Comprovacions
         $this->assertEquals($dateToTest, '');
+    }
+    /** @test */
+    public function video_have_serie()
+    {
+        $video=Video::create([
+            'title' => 'Ubuntu 101',
+            'description' => '# Here description',
+            'url' => 'https://youtube/w8j07_DBL_I'
+        ]);
+
+        $this->assertNull($video->fresh()->serie);
+
+        $serie=Serie::create([
+            'title' => 'TDD (Test Driven Development)',
+            'description' => 'Bla bla bla',
+            'image' => 'tdd.png',
+            'teacher_name' => 'David Pont Lopez',
+        ]);
+
+        $video->setSerie($serie);
+
     }
 }

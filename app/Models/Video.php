@@ -5,9 +5,15 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tests\Unit\VideoTest;
+
 
 class Video extends Model
 {
+    public static function testedBy()
+    {
+        return videoTest::class;
+    }
     use HasFactory;
 
     protected $guarded =[];
@@ -33,4 +39,15 @@ class Video extends Model
 
     }
 
+    public function serie()
+    {
+       return $this->belongsTo(Serie::class);
+    }
+
+    public function setSerie(Serie $serie)
+    {
+        $this->serie_id=$serie->id;
+        $this->save();
+        return $this;
+    }
 }

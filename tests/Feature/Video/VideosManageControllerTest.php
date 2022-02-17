@@ -3,10 +3,12 @@
 namespace Tests\Feature\Video;
 
 use App\Events\VideoCreated;
+use App\Models\Serie;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Spatie\Permission\Models\Permission;
@@ -202,6 +204,96 @@ class VideosManageControllerTest extends TestCase
     }
 
     /** @test */
+    public function user_with_permissions_can_manage_videos_and_see_serie()
+    {
+        $this->loginAsVideoManager();
+
+        $videos=createSampleVideos();
+
+        $serie = Serie::create([
+            'title' => 'TDD (Test Driven Development)',
+            'description' => 'Bla bla bla',
+            'image' => 'tdd.png',
+            'teacher_name' => 'David Pont Lopez',
+            'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('dpont@iesebre.com'),
+
+        ]);
+
+
+        $videos[0]->setSerie($serie);
+
+        $response = $this->get('/manage/videos');
+
+        $response->assertStatus(200);
+        $response->assertViewIs('videos.manage.index');
+        $response->assertViewHas('videos',function ($v) use ($videos){
+            return $v->count() === count($videos) && get_class($v) === Collection::class && get_class($videos[0]) === Video::class;
+        });
+
+        foreach ($videos as $video) {
+            $response->assertSee($video->id);
+            $response->assertSee($video->title);
+            $response->assertSee($video->serie_id);
+        }
+    }
+
+
+    /** @test */
+    public function title_is_required()
+    {
+
+        $this->loginAsVideoManager();
+
+     $response = $this->postJson('/manage/videos/',[
+
+         //'title'=> '123445678',
+         'description' =>"Pepe's device",
+         'url' =>"https://youtube/w8j07_DBL_I2"
+     ]);
+
+        $json_response = json_decode($response->getContent());
+        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The title field is required.",$json_response->errors->title[0]);
+
+    }
+
+    /** @test */
+    public function description_is_required()
+    {
+        $this->loginAsVideoManager();
+
+        $response = $this->postJson('/manage/videos/',[
+
+            'title'=> '123445678',
+            //'description' =>"Pepe's device",
+            'url' =>"https://youtube/w8j07_DBL_I2"
+        ]);
+
+        $json_response = json_decode($response->getContent());
+        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The description field is required.",$json_response->errors->description[0]);
+    }
+
+    /** @test */
+    public function url_is_required()
+    {
+        $this->loginAsVideoManager();
+
+        $response = $this->postJson('/manage/videos/',[
+
+            'title'=> '123445678',
+            'description' =>"Pepe's device",
+            //'url' =>"https://youtube/w8j07_DBL_I2"
+        ]);
+
+        $json_response = json_decode($response->getContent());
+        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The url field is required.",$json_response->errors->url[0]);
+
+    }
+
+
+    /** @test */
     public function regular_users_cannot_manage_videos()
     {
         $this->loginAsRegularUser();
@@ -219,6 +311,53 @@ class VideosManageControllerTest extends TestCase
         $response = $this->get('/manage/videos');
 
         $response->assertRedirect(route('login'));
+    }
+
+    /** @test */
+
+    public function user_with_permissions_can_store_videos_with_series()
+    {
+        $this->loginAsVideoManager();
+
+        $serie = Serie::create([
+            'title' => 'TDD (Test Driven Development)',
+            'description' => 'Bla bla bla',
+            'image' => 'tdd.png',
+            'teacher_name' => 'David Pont Lopez',
+            'teacher_photo_url' => 'https://www.gravatar.com/avatar/' . md5('dpont@iesebre.com'),
+        ]);
+
+        $video=objectify([
+            'title'=>'HTTP for noobs',
+            'description'=>'HTTP per petardos',
+            'url'=>'https://www.aranolase.com',
+            'serie_id'=>$serie->id
+        ]);
+
+        Event::fake();
+
+        $response = $this->post('/manage/videos',[
+            'title'=>'HTTP for noobs',
+            'description'=>'HTTP per petardos',
+            'url'=>'https://www.aranolase.com',
+            'serie_id'=>$serie->id
+        ]);
+
+        Event::assertDispatched(VideoCreated::class);
+
+        $response->assertRedirect(route('manage.videos'));
+        $response->assertSessionHas('status','Successfully created');
+
+        //$response->assertStatus(201);
+        $videoDB = Video::first();
+        $this->assertNotNull($videoDB);
+        $this->assertEquals($videoDB->title, $video->title);
+        $this->assertEquals($videoDB->description, $video->description);
+        $this->assertEquals($videoDB->url, $video->url);
+        $this->assertEquals($videoDB->serie_id, $video->serie_id);
+        $this->assertNull($video->published_at);
+
+
     }
 
 

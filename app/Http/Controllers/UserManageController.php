@@ -24,6 +24,8 @@ class UserManageController extends Controller
 
     public function store(Request $request)
     {
+
+
         $user=User::create([
             'name'=>$request->name,
             'email'=>$request->email,

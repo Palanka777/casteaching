@@ -21,7 +21,6 @@ class CreateVideosTable extends Migration
             $table->dateTime('published_at')->nullable();
             $table->String('previous')->nullable();
             $table->String('next')->nullable();
-            $table->unsignedInteger('series_id')->nullable();
             $table->timestamps();
         });
 

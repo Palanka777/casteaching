@@ -54,7 +54,7 @@ if (!function_exists('create_default_user')) {
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
-                'series_id' => 1
+                'serie_id' => 1
             ]);
         }
     }
@@ -190,7 +190,7 @@ if (!function_exists('create_default_user')) {
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
-                'series_id' => 1
+                'serie_id' => 1
             ]);
 
             $video2 = Video::create([
@@ -200,7 +200,7 @@ if (!function_exists('create_default_user')) {
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
-                'series_id' => 1
+                'serie_id' => 1
             ]);
 
             $video3 = Video::create([
@@ -210,7 +210,7 @@ if (!function_exists('create_default_user')) {
                 'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
                 'previous' => null,
                 'next' => null,
-                'series_id' => 1
+                'serie_id' => 1
             ]);
 
             return [$video1, $video2, $video3];

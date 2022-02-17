@@ -14,5 +14,6 @@ return [
 ],
     'admins'=>[
         'dpont@iesebre.com',
+        'sergiturbadenas@gmail.com'
     ]
 ];

@@ -41,4 +41,5 @@ class Serie extends Model
         return optional($this->created_at)->timestamp;
 
     }
+
 }
