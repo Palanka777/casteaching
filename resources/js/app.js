@@ -10,7 +10,7 @@ require('./bootstrap');
 window.Alpine = Alpine;
 Alpine.start();
 window.casteaching = casteaching({baseUrl:'/api'});
-
+//todo diferencia en la baseurl de casteaching
 const vueApp = document.querySelector('#app')
 
 if(vueApp){

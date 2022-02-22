@@ -42,7 +42,14 @@
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
+                    <a href="/auth/redirect">
+                        <x-jet-button class="ml-10" >
+                            {{ __('Github') }}
+                        </x-jet-button>
+                    </a>
             </div>
         </form>
+
+
     </x-jet-authentication-card>
 </x-guest-layout>

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Tests\Feature\Traits\CanLogin;
 use Tests\TestCase;
@@ -264,7 +265,7 @@ class VideosManageControllerTest extends TestCase
 
         $response = $this->postJson('/manage/videos/',[
 
-            'title'=> '123445678',
+            'title'=> 'Video 1',
             //'description' =>"Pepe's device",
             'url' =>"https://youtube/w8j07_DBL_I2"
         ]);
@@ -357,6 +358,44 @@ class VideosManageControllerTest extends TestCase
         $this->assertEquals($videoDB->serie_id, $video->serie_id);
         $this->assertNull($video->published_at);
 
+
+    }
+
+    /** @test */
+
+    public function user_with_permissions_can_store_videos_with_user_id()
+    {
+        $this->loginAsVideoManager();
+
+        $user = User::create([
+            'name' => 'Pepe Pardo Jeans',
+            'email' => 'pepepardo@casteaching.com',
+            'password' => Hash::make('12345678')
+        ]);
+
+        $video = objectify($videoArray = [
+            'title' => 'HTTP for noobs',
+            'description' => 'Te ensenyo tot el que se sobre HTTP',
+            'url' => 'https://tubeme.acacha.org/http',
+            'user_id' => $user->id
+        ]);
+
+        Event::fake();
+        $response = $this->post('/manage/videos',$videoArray);
+
+        Event::assertDispatched(VideoCreated::class);
+
+        $response->assertRedirect(route('manage.videos'));
+        $response->assertSessionHas('status', 'Successfully created');
+
+        $videoDB = Video::first();
+
+        $this->assertNotNull($videoDB);
+        $this->assertEquals($videoDB->title,$video->title);
+        $this->assertEquals($videoDB->description,$video->description);
+        $this->assertEquals($videoDB->url,$video->url);
+        $this->assertEquals($videoDB->user_id,$user->id);
+        $this->assertNull($video->published_at);
 
     }
 

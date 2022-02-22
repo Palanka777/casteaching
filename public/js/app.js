@@ -8262,7 +8262,8 @@ window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 window.casteaching = (0,_acacha_casteaching__WEBPACK_IMPORTED_MODULE_2__["default"])({
   baseUrl: '/api'
-});
+}); //todo diferencia en la baseurl de casteaching
+
 var vueApp = document.querySelector('#app');
 
 if (vueApp) {
