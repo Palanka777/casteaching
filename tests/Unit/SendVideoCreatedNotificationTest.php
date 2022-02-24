@@ -8,7 +8,8 @@ use App\Events\VideoCreated;
 use App\Listeners\SendVideoCreatedNotification;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Notifications\AnonymousNotifiable;
-use Illuminate\Notifications\Notification;
+
+use Illuminate\Support\Facades\Notification;
 use Psy\Util\Str;
 use Tests\TestCase;
 

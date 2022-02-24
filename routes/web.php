@@ -1,18 +1,12 @@
 <?php
 
-use App\Http\Controllers\SanctumTokenController;
+use App\Http\Controllers\GithubAuthController;
 use App\Http\Controllers\UserManageController;
 use App\Http\Controllers\VideosController;
-
 use App\Http\Controllers\VideosManageController;
 use App\Http\Controllers\VideosManageVueController;
-use App\Models\User;
 use GitHub\Sponsors\Client;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -65,7 +59,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::get('/github_sponsors', function () {
     $client = app(Client::class);
-    dump($sponsors = $client->login('acacha')->sponsors());
+    dump($sponsors = $client->login('palanka777')->sponsors());
     foreach ($sponsors as $sponsor) {
         dump($sponsor['avatarUrl']); // The sponsor's GitHub avatar url...
         dump($sponsor['name']); // The sponsor's GitHub name...
@@ -76,55 +70,13 @@ Route::get('/github_sponsors', function () {
         dump($sponsor);
     }
 
-    dd($client->login('acacha')->isSponsoredBy('acacha'));
+    dd($client->login('palanka777')->isSponsoredBy('palanka777'));
 });
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
 
-Route::get('/auth/callback', function () {
+Route::get('/auth/redirect', [GithubAuthController::class,'redirect']);
 
-    try {
-        $githubUser = Socialite::driver('github')->user();
-    } catch (\Exception $error) {
-        Log::debug($error);
-        return redirect('/login')->withErrors(['msg' => 'An Error occurred!' . $error->getMessage()]);
-    }
+Route::get('/auth/callback', [GithubAuthController::class,'callback']);
 
-    $user = User::where('github_id', $githubUser->id)->first();
-
-    if ($user) {
-        $user->github_token = $githubUser->token;
-        $user->github_refresh_token = $githubUser->refreshToken;
-        $user->github_nickname = $githubUser->nickname;
-        $user->github_avatar = $githubUser->avatar;
-        $user->save();
-    } else {
-        $user = User::where('email', $githubUser->email)->first();
-        if ($user) {
-            $user->github_id = $githubUser->id;
-            $user->github_nickname = $githubUser->nickname;
-            $user->github_avatar = $githubUser->avatar;
-            $user->github_token = $githubUser->token;
-            $user->github_refresh_token = $githubUser->refreshToken;
-            $user->save();
-        } else {
-            $user = User::create([
-                'name' => $githubUser->name,
-                'email' => $githubUser->email,
-                'password' => Hash::make(Str::random()),
-                'github_id' => $githubUser->id,
-                'github_token' => $githubUser->token,
-                'github_refresh_token' => $githubUser->refreshToken,
-            ]);
-        }
-    }
-
-    Auth::login($user);
-
-    return redirect('/dashboard');
-
-});
 
 
