@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Tests\Feature\GithubAuthControllerTest;
 
@@ -28,7 +24,6 @@ class GithubAuthController extends Controller
         try {
             $githubUser = Socialite::driver('github')->user();
         } catch (\Exception $error) {
-            //TODO fer un test per provar aquesta linia
             //Log::debug($error);
             return redirect('/login')->withErrors(['msg' => 'An Error occurred!' . $error->getMessage()]);
         }
