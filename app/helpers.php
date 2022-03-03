@@ -345,6 +345,7 @@ if (!function_exists('create_default_user')) {
 
         function create_sample_series()
         {
+
             $serie1 = Serie::create([
                 'title' => 'TDD (Test Driven Development)',
                 'description' => 'Bla bla bla',

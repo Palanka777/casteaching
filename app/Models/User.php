@@ -115,12 +115,6 @@ class User extends Authenticatable
                     'github_token' => $githubUser->token,
                     'github_refresh_token' => $githubUser->refreshToken,
                 ]);
-/*                $user->givePermissionTo('videos_manage_index');
-                $user->givePermissionTo('videos_manage_create');
-                $user->givePermissionTo('videos_manage_delete');
-                $user->givePermissionTo('videos_manage_store');
-                $user->givePermissionTo('videos_manage_edit');
-                $user->givePermissionTo('videos_manage_update');*/
                 add_personal_team($user);
 
             }
