@@ -23,7 +23,7 @@ public static function testedby(){
      */
     public function handle(VideoCreated $event)
     {
-        Notification::route('mail', 'dpont@iesebre.com')->notify(new \App\Notifications\VideoCreated($event->video));
+        Notification::route('mail', config('casteaching.admins'))->notify(new \App\Notifications\VideoCreated($event->video));
 
     }
 }
