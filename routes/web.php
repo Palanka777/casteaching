@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GithubAuthController;
+use App\Http\Controllers\SeriesImageManageController;
 use App\Http\Controllers\SeriesManageController;
 use App\Http\Controllers\UserManageController;
 use App\Http\Controllers\VideosController;
@@ -43,6 +44,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::delete('/manage/series/{id}',[ SeriesManageController::class,'destroy' ])->middleware(['can:series_manage_destroy']);
     Route::get('/manage/series/{id}',[ SeriesManageController::class,'edit' ])->middleware(['can:series_manage_edit']);
     Route::put('/manage/series/{id}',[ SeriesManageController::class,'update' ])->middleware(['can:series_manage_update']);
+
+    Route::put('/manage/series/{id}/image',[ SeriesImageManageController::class,'update' ])->middleware(['can:series_manage_update']);
 
 
     Route::get('/manage/videos', [VideosManageController::class,'index'])->middleware(['can:videos_manage_index'])->name('manage.videos');
