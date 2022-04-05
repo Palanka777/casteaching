@@ -15,7 +15,7 @@ class SeriesImageManageController extends Controller
     public function update(Request $request)
     {
         $serie= Serie::findOrFail($request->id);
-        $serie->image = $request->file('image')->store('series');
+        $serie->image = $request->file('image')->store('series','public');
         $serie->save();
         session()->flash('status', __('Successfully updated'));
 

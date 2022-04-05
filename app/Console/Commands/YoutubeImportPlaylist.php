@@ -48,39 +48,21 @@ class YoutubeImportPlaylist extends Command
      */
     public function handle()
     {
-        // CANAL ACACHA_DEV
-        //https://www.youtube.com/channel/UColShZx2cvqR28k_wOVPRUg
-        // Canal: UColShZx2cvqR28k_wOVPRUg
-        // Playlist
-        // TDD https://www.youtube.com/playlist?list=PLyasg1A0hpk07HA0VCApd4AGd3Xm45LQv
-        // TDD playlist: PLyasg1A0hpk07HA0VCApd4AGd3Xm45LQv
-        //    $video = Youtube::getVideoInfo('rie-hPVJ7Sw');
-        //    dd($video);
 
         // Get playlist by ID, return an STD PHP object
         $playlist = Youtube::getPlaylistById($this->argument('playlistId'));
         $this->info('Serie name: ' . $playlist->snippet->title);
         $this->info('Creating serie...');
-//            dd($playlist->snippet);
 
-//            $path = Storage::download($playlist->snippet->thumbnails->maxres->url);
-
-        $extension = pathinfo(storage_path(($playlist->snippet->thumbnails->maxres->url), PATHINFO_EXTENSION))['extension'];
-        $filename = Str::slug($playlist->snippet->title).'.'.$extension;
-        $path = 'app/public/series/' . $filename;
-        copy($playlist->snippet->thumbnails->maxres->url, storage_path($path));
-
-        //            dd(storage_path($path));
-//
-//        dd(Str::random(40));
-//            dd($path);
-//            dd($playlist->snippet->thumbnails->maxres->url);
-        //            https://i.ytimg.com/vi/ednlsVl-NHA/maxresdefault.jpg
+        $temp=tmpfile();
+        $path = stream_get_meta_data($temp)['uri'];
+        copy($playlist->snippet->thumbnails->maxres->url, $path);
+        $path = Storage::disk('public')->putFile('series', new File($path));
 
         $serie = Serie::create([
             'title' => $playlist->snippet->title,
             'description' => $playlist->snippet->description,
-            'image' => $filename,
+            'image' => $path,
             'teacher_name' => 'Sergi Tur Badenas',
             'teacher_photo_url' => 'https://www.gravatar.com/avatar/046889f49471fd40d105eb76b9d83bf6'
         ]);
