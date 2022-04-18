@@ -392,8 +392,9 @@ if (!function_exists('create_default_user')) {
                 //'created_at' => Carbon::now()->addSeconds(1)
             ]);
 
-            $path = Storage::disk('public')->putFile('series', new File(base_path('series_photos/crud.jpg')));
             sleep(1);
+            $path = Storage::disk('public')->putFile('series', new File(base_path('series_photos/crud.jpg')));
+
             $serie2 = Serie::create([
                 'title' => 'Crud amb Vue Laravel',
                 'description' => 'Bla bla bla',
@@ -403,8 +404,9 @@ if (!function_exists('create_default_user')) {
                 //'created_at' => Carbon::now()->addSeconds(1)
             ]);
 
-            $path = Storage::disk('public')->putFile('series', new File(base_path('series_photos/ionic_real_world.png')));
             sleep(1);
+            $path = Storage::disk('public')->putFile('series', new File(base_path('series_photos/ionic_real_world.png')));
+
             $serie3 = Serie::create([
                 'title' => 'Ionic Real World',
                 'description' => 'Bla bla bla',
