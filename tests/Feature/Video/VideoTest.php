@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Video;
 
+use App\Models\Serie;
 use App\Models\Video;
 use Carbon\Carbon;
 use Carbon\Exceptions\Exception;
@@ -25,6 +26,10 @@ class VideoTest extends TestCase
 
         //create_default_user();
         //create_default_video();
+        $serie = Serie::create([
+            'title' => 'TDD (Test Driven Development)',
+            'description' => 'Bla bla bla'
+        ]);
 
         $video = Video::create([
            'title' => 'Ubuntu 101',
@@ -33,7 +38,7 @@ class VideoTest extends TestCase
            'published_at' => Carbon::parse('December 13, 2020 8:00pm'),
            'previous' => null,
            'next' => null,
-           'serie_id' => 1
+           'serie_id' => $serie->id
         ]);
 
         // FASE 2 -> Execució -> Executa el codi a provar
