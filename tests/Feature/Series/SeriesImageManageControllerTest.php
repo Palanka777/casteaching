@@ -126,9 +126,7 @@ class SeriesImageManageControllerTest extends TestCase
 
         $response->assertRedirect();
 
-        $response->assertSessionHasErrors('image',function($error){
-            dd($error);
-        });
+        $response->assertSessionHasErrors('image');
 
         $this->assertEquals('series/anterior.png',$serie->refresh()->image);
     }
