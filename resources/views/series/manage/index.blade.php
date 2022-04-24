@@ -112,7 +112,8 @@
                                             {{ $serie->description }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/series/{{$serie->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                        <!--  aqui aixo ho he cambiat pero no em convens el arreglo-->
+                                            <a href="/videos/{{$serie->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Show</a>
                                             <a href="/manage/series/{{$serie->id}}" target="_blank" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             <form class="inline" action="/manage/series/{{$serie->id}}" method="POST">
                                                 @csrf
