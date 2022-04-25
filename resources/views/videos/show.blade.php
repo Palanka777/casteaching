@@ -27,7 +27,7 @@
                     <span class="w-80 truncate">{{ $video->serie?->title }}</span>
                 </div>
                 <div class="mt-5 flex-1 h-0 overflow-y-auto">
-                    <nav class="px-2">
+                    <nav class="px-2 ">
                         <div class="space-y-1">
                         @foreach ($videos_series as $sVideo)
                             @if ($sVideo->is($video))
@@ -106,7 +106,7 @@
             {{--                    </div>--}}
             {{--                </div>--}}
             <!-- Navigation -->
-                <nav class="px-3 mt-6 overflow-y-auto">
+                <nav class="px-3 mt-6 overflow-y-auto" style="height: calc(100vh - 244px);">
                     <div class="space-y-1">
                         @foreach ($videos_series as $sVideo)
                         @if ($sVideo->is($video))
