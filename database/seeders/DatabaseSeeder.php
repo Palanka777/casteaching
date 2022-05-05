@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         create_default_video();
         createSampleVideos();
         create_permissions();
-
+        create_placeholder_series_image();
 
     }
 }

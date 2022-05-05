@@ -253,7 +253,7 @@ class VideosManageControllerTest extends TestCase
      ]);
 
         $json_response = json_decode($response->getContent());
-        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The title field is required.",$json_response->message);
         $this->assertEquals("The title field is required.",$json_response->errors->title[0]);
 
     }
@@ -271,7 +271,7 @@ class VideosManageControllerTest extends TestCase
         ]);
 
         $json_response = json_decode($response->getContent());
-        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The description field is required.",$json_response->message);
         $this->assertEquals("The description field is required.",$json_response->errors->description[0]);
     }
 
@@ -288,7 +288,7 @@ class VideosManageControllerTest extends TestCase
         ]);
 
         $json_response = json_decode($response->getContent());
-        $this->assertEquals("The given data was invalid.",$json_response->message);
+        $this->assertEquals("The url field is required.",$json_response->message);
         $this->assertEquals("The url field is required.",$json_response->errors->url[0]);
 
     }

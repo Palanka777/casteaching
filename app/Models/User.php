@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
+use Kanuu\Laravel\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Tests\Unit\UserTest;
@@ -23,6 +24,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use Billable;
 
 
     public static function testedBy(){
@@ -89,7 +91,7 @@ class User extends Authenticatable
         $user = User::where('github_id', $githubUser->id)->first();
 
         if ($user) {
-            $user->name = $githubUser->name;
+            $user->name = $githubUser->name || 'Github User';
             $user->github_token = $githubUser->token;
             $user->github_refresh_token = $githubUser->refreshToken;
             $user->github_nickname = $githubUser->nickname;
@@ -107,7 +109,7 @@ class User extends Authenticatable
                 $user->save();
             } else {
                 $user = User::create([
-                    'name' => $githubUser->name,
+                    'name' => $githubUser->name || 'Github User',
                     'email' => $githubUser->email,
                     'password' => Hash::make(Str::random()),
                     'github_id' => $githubUser->id,

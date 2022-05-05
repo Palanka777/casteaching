@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Auth;
 
 trait CanLogin
 {
+    private function loginAsSeriesManager()
+    {
+        Auth::login($user = create_series_manager_user());
+        return $user;
+    }
+
     public function superadmins_can_manage_videos()
     {
         $this->loginAsSuperAdmin();

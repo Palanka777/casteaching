@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(options) {
     let apiClient = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-        baseURL: (options && options.baseUrl) || "http://casteaching.test/api",
+        baseURL: (options && options.baseUrl) || "https://casteaching.test/api",
         withCredentials: true,
         headers: {
             Accept: 'application/json',
