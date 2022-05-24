@@ -4,6 +4,7 @@ import casteaching from '@acacha/casteaching'
 import Vue from 'vue'
 import VideoForm from "./components/VideoForm";
 import Status from "./components/Status";
+import Notification from "./components/Notification";
 
 require('./bootstrap');
 
@@ -18,6 +19,7 @@ if(vueApp){
     window.Vue.component('videos-list', VideosList )
     window.Vue.component('video-form', VideoForm )
     window.Vue.component('status', Status )
+    window.Vue.component('notification', Notification)
 
     const app = new window.Vue({
         el: '#app',

@@ -46,6 +46,9 @@
     <!-- Page Content -->
         <main>
             {{ $slot }}
+            <div id="app">
+                <notification></notification>
+            </div>
         </main>
     </div>
     </body>

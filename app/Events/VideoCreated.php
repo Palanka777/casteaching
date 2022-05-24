@@ -27,6 +27,6 @@ class VideoCreated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('notifications');
+        return new Channel('notifications',$this->video);
     }
 }
