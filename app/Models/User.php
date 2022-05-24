@@ -108,8 +108,9 @@ class User extends Authenticatable
                 $user->github_refresh_token = $githubUser->refreshToken;
                 $user->save();
             } else {
+
                 $user = User::create([
-                    'name' => $githubUser->name || 'Github User',
+                    'name' => $githubUser->name ?? 'Github User',
                     'email' => $githubUser->email,
                     'password' => Hash::make(Str::random()),
                     'github_id' => $githubUser->id,
