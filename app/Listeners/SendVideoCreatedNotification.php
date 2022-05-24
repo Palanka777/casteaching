@@ -23,7 +23,9 @@ public static function testedby(){
      */
     public function handle(VideoCreated $event)
     {
-        Notification::route(['mail','broadcast'], config('casteaching.admins'))->notify(new \App\Notifications\VideoCreated($event->video));
+        Notification::route('mail', config('casteaching.admins'))
+            ->route('broadcast', config('casteaching.admins'))
+            ->notify(new \App\Notifications\VideoCreated($event->video));
 
     }
 }
