@@ -8,13 +8,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Tests\Feature\Video\VideoCreatedTest;
 
 class VideoCreated extends Notification
 {
+    public static function testedBy()
+    {
+        return VideoCreatedTest::class;
+    }
+
     use Queueable;
 
     private $video;
-
 
     public function __construct(Video $video)
     {

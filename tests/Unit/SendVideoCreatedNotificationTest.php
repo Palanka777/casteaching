@@ -36,5 +36,7 @@ class SendVideoCreatedNotificationTest extends TestCase
                 return in_array('mail',$channels)&&($notificable->routes['mail']=== $admins)&& Str::contains($notification->toMail($notificable)->render(),$video->title);
             }
         );
+
     }
+
 }
